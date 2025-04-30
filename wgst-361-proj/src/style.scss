@@ -24,6 +24,7 @@ body {
     position: relative;
     display: inline-block;
     overflow: hidden;
+    width: 100%;
     .title-flag {
         z-index: 1;
         position: absolute;
@@ -54,8 +55,20 @@ body {
     }
 }
 
+.title-nameplate {
+    width: calc(100% - 64px);
+    margin-top: -16px;
+    background-color: rgb(36,36,36, 0.75);
+}
+
 .layout-stack {
     height: 100%;
     width: 100%;
     overflow: hidden;
+}
+
+.main-content {
+    flex-grow: 1;
+    width: 100%;
+    background-color: rgb(36,36,36, 0.5);
 }

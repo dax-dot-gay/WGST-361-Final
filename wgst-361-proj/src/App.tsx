@@ -1,16 +1,16 @@
 import {
-    Box,
     createTheme,
     Group,
     MantineProvider,
     Paper,
+    Space,
     Stack,
     Text,
     Title,
 } from "@mantine/core";
 import "./style.scss";
 import { GiAnarchy } from "react-icons/gi";
-import { MdChevronRight, MdModeEdit } from "react-icons/md";
+import { MdChevronRight } from "react-icons/md";
 
 export function App() {
     return (
@@ -20,7 +20,7 @@ export function App() {
                 white: "#ffffff",
             })}
         >
-            <Stack gap="sm" className="layout-stack" p="md">
+            <Stack gap={0} className="layout-stack" p="md" align="center">
                 <Paper p="md" className="title-card" radius="md" shadow="md">
                     <img
                         className="title-flag trans"
@@ -36,15 +36,23 @@ export function App() {
                     />
                     <Group gap="xl" className="title-content" pl="lg">
                         <GiAnarchy size={48} color="white" />
-                        <Stack gap={0} ml="84px">
-                            <Title order={2}>Queering Gender</Title>
+                        <Stack gap={0} ml="48px">
+                            <Title ml="32px" order={2}>
+                                Queering Gender
+                            </Title>
                             <Text size="md" c="dimmed">
                                 As Resistance Against Empire
                             </Text>
                         </Stack>
                     </Group>
                 </Paper>
-                <Paper p="sm" radius="md" shadow="sm">
+                <Paper
+                    p="sm"
+                    pt="24px"
+                    radius="md"
+                    shadow="sm"
+                    className="title-nameplate"
+                >
                     <Group gap="sm">
                         <Text fw="bold">WGST-361</Text>
                         <MdChevronRight
@@ -54,7 +62,13 @@ export function App() {
                         <Text>Dax Harris</Text>
                     </Group>
                 </Paper>
-                <Box className="main-content"></Box>
+                <Space h="sm"></Space>
+                <Paper
+                    className="main-content"
+                    withBorder
+                    p="sm"
+                    radius="md"
+                ></Paper>
             </Stack>
         </MantineProvider>
     );
