@@ -11,8 +11,16 @@ import {
 import "./style.scss";
 import { GiAnarchy } from "react-icons/gi";
 import { MdChevronRight } from "react-icons/md";
+import { useRef } from "react";
+import { Scenes } from "./Scenes";
+import { SceneManager } from "./components/SceneManager";
 
 export function App() {
+    const sceneRef = useRef<{
+        goTo: (scene: string) => void;
+        reset: () => void;
+    }>(null as any);
+
     return (
         <MantineProvider
             defaultColorScheme="dark"
@@ -63,12 +71,11 @@ export function App() {
                     </Group>
                 </Paper>
                 <Space h="sm"></Space>
-                <Paper
-                    className="main-content"
-                    withBorder
-                    p="sm"
-                    radius="md"
-                ></Paper>
+                <Paper className="main-content" withBorder p="sm" radius="md">
+                    <SceneManager initial="start" ref={sceneRef}>
+                        <Scenes />
+                    </SceneManager>
+                </Paper>
             </Stack>
         </MantineProvider>
     );
