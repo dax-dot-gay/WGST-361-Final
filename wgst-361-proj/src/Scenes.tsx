@@ -1,11 +1,11 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { Autocomplete, Button, Center, Group, Loader, Paper, Select, Stack, Text, Title, Tooltip } from "@mantine/core";
 import { useMap } from "@mantine/hooks";
-import { Scene, SceneButton, useScenes } from "./components/SceneManager";
+import { Scene, SceneButton } from "./components/SceneManager";
 import { MdCheck, MdClose, MdFlag, MdLocationPin, MdPerson } from "react-icons/md";
 import { useCallback } from "react";
 import { TbMoodAngryFilled, TbMoodAnnoyed, TbMoodHappyFilled, TbMoodSadFilled } from "react-icons/tb";
 import { Slide1 } from "./slides/Slide1";
+import { Slide2 } from "./slides/Slide2";
 
 const ALLOWED_NAMES = [
     "henry lee tyler",
@@ -48,7 +48,6 @@ function useInputs(): [<T = any>(name: string, fallback?: T) => T | null, <T = a
 }
 
 export function Scenes() {
-    const [scene, setScene] = useScenes();
     const [field, setField] = useInputs();
 
     return (
@@ -357,6 +356,7 @@ export function Scenes() {
                 </Stack>
             </Scene>
             <Slide1 />
+            <Slide2 />
         </>
     );
 }

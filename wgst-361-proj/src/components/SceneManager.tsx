@@ -43,7 +43,6 @@ export function SceneManager({
     const goTo = useCallback(
         (scene: string) => {
             nav(`/${scene}`);
-            setScene(scene);
         },
         [setScene]
     );
