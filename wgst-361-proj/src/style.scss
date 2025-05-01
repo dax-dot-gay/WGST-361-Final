@@ -83,3 +83,37 @@ body {
         }
     }
 }
+
+.citation-list {
+    .citation-item {
+        cursor: pointer;
+        transition: background-color 0.1s;
+
+        &:hover {
+            background-color: var(--mantine-color-default);
+        }
+
+        &.selected {
+            border-color: rgb(169, 84, 197) !important;
+        }
+    }
+}
+
+.citation-summary {
+    cursor: pointer;
+    transition: filter 0.1s;
+
+    &:hover {
+        filter: brightness(1.3);
+    }
+}
+
+.cited-image {
+    background-color: var(--mantine-color-default);
+    overflow: hidden;
+    box-sizing: content-box;
+
+    .cited-image-source {
+        cursor: pointer;
+    }
+}

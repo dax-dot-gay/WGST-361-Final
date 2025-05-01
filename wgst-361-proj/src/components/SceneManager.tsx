@@ -12,9 +12,11 @@ import {
     Ref,
     useCallback,
     useContext,
+    useEffect,
     useImperativeHandle,
     useState,
 } from "react";
+import { useNavigate, useOutletContext, useParams } from "react-router";
 
 type SceneManagerContextType = {
     currentScene: string;
@@ -31,19 +33,31 @@ export function useScenes(): [string, (scene: string) => void] {
 export function SceneManager({
     children,
     initial,
-    ref,
 }: {
     children: ReactNode[] | ReactNode;
     initial: string;
-    ref: Ref<{ goTo: (scene: string) => void; reset: () => void }>;
 }) {
-    const [scene, setScene] = useState(initial);
+    const desiredScene = useParams()["scene"];
+    const [scene, setScene] = useState(desiredScene ?? initial);
+    const nav = useNavigate();
     const goTo = useCallback(
         (scene: string) => {
+            nav(`/${scene}`);
             setScene(scene);
         },
         [setScene]
     );
+
+    useEffect(() => {
+        if (desiredScene && desiredScene !== scene) {
+            setScene(desiredScene);
+        }
+    }, [scene, setScene, desiredScene]);
+
+    const ref = useOutletContext() as Ref<{
+        goTo: (scene: string) => void;
+        reset: () => void;
+    }>;
 
     useImperativeHandle(
         ref,

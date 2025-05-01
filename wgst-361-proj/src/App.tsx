@@ -1,4 +1,5 @@
 import {
+    Button,
     createTheme,
     Group,
     MantineProvider,
@@ -10,10 +11,9 @@ import {
 } from "@mantine/core";
 import "./style.scss";
 import { GiAnarchy } from "react-icons/gi";
-import { MdChevronRight } from "react-icons/md";
+import { MdChevronRight, MdCollectionsBookmark } from "react-icons/md";
 import { useRef } from "react";
-import { Scenes } from "./Scenes";
-import { SceneManager } from "./components/SceneManager";
+import { Outlet, useNavigate } from "react-router";
 
 export function App() {
     const sceneRef = useRef<{
@@ -21,11 +21,16 @@ export function App() {
         reset: () => void;
     }>(null as any);
 
+    const nav = useNavigate();
+
     return (
         <MantineProvider
             defaultColorScheme="dark"
             theme={createTheme({
                 white: "#ffffff",
+                headings: {
+                    fontFamily: "monospace",
+                },
             })}
         >
             <Stack gap={0} className="layout-stack" p="md" align="center">
@@ -42,16 +47,33 @@ export function App() {
                         className="title-flag genderqueer"
                         src="/assets/img/flag-genderqueer.png"
                     />
-                    <Group gap="xl" className="title-content" pl="lg">
-                        <GiAnarchy size={48} color="white" />
-                        <Stack gap={0} ml="48px">
-                            <Title ml="32px" order={2}>
-                                Queering Gender
-                            </Title>
-                            <Text size="md" c="dimmed">
-                                As Resistance Against Empire
-                            </Text>
-                        </Stack>
+                    <Group
+                        gap="xl"
+                        className="title-content"
+                        pl="lg"
+                        justify="space-between"
+                        pr={4}
+                    >
+                        <Group gap="xl" className="title-header">
+                            <GiAnarchy size={48} color="white" />
+                            <Stack gap={0} ml="48px">
+                                <Title ml="32px" order={2}>
+                                    Queering Gender
+                                </Title>
+                                <Text size="md" c="dimmed">
+                                    As Resistance Against Empire
+                                </Text>
+                            </Stack>
+                        </Group>
+                        <Button
+                            className="citations-button"
+                            variant="light"
+                            leftSection={<MdCollectionsBookmark size={20} />}
+                            size="lg"
+                            onClick={() => nav("/citations")}
+                        >
+                            Citations
+                        </Button>
                     </Group>
                 </Paper>
                 <Paper
@@ -71,10 +93,8 @@ export function App() {
                     </Group>
                 </Paper>
                 <Space h="sm"></Space>
-                <Paper className="main-content" withBorder p="sm" radius="md">
-                    <SceneManager initial="start" ref={sceneRef}>
-                        <Scenes />
-                    </SceneManager>
+                <Paper className="main-content" withBorder p={0} radius="md">
+                    <Outlet context={sceneRef} />
                 </Paper>
             </Stack>
         </MantineProvider>

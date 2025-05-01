@@ -1,23 +1,82 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import {
+    Accordion,
+    AccordionControl,
+    AccordionItem,
+    AccordionPanel,
+    Autocomplete,
+    Button,
     Center,
+    Divider,
     Group,
     Loader,
+    Paper,
+    ScrollAreaAutosize,
     Select,
     Stack,
     Text,
     Title,
+    Tooltip,
 } from "@mantine/core";
 import { useMap } from "@mantine/hooks";
 import { Scene, SceneButton, useScenes } from "./components/SceneManager";
-import { MdCheck, MdClose, MdLocationPin } from "react-icons/md";
-import { useCallback, useEffect } from "react";
-import { TbMoodAngryFilled, TbMoodSadFilled } from "react-icons/tb";
+import { MdArrowRight, MdCheck, MdClose, MdFlag, MdLocationPin, MdPerson } from "react-icons/md";
+import { ReactNode, useCallback } from "react";
+import {
+    TbBrain,
+    TbGenderTransgender,
+    TbMoodAngryFilled,
+    TbMoodAnnoyed,
+    TbMoodHappyFilled,
+    TbMoodSadFilled,
+} from "react-icons/tb";
+import { CitationSummary, Cite, CitedImage } from "./components/Citations";
 
-function useInputs(): [
-    <T = any>(name: string, fallback?: T) => T | null,
-    <T = any>(name: string, value: T) => void
-] {
+const ALLOWED_NAMES = [
+    "henry lee tyler",
+    "george caldwell",
+    "alice smith",
+    "lon brown",
+    "cornelius vanderbilt",
+    "miriam jones",
+    "thomas hall",
+    "mary cook",
+];
+
+function Slide({
+    name,
+    next,
+    title,
+    children,
+}: {
+    name: string;
+    next: string;
+    title: string;
+    children?: ReactNode | ReactNode[];
+}) {
+    return (
+        <Scene name={name}>
+            <Stack p={0} gap={0} w="100%" h="100%">
+                <Group gap="sm" justify="space-between" p="sm">
+                    <Title order={2} ff="monospace">
+                        {title}
+                    </Title>
+                    <SceneButton size="md" rightSection={<MdArrowRight size={20} />} target={next}>
+                        Continue
+                    </SceneButton>
+                </Group>
+                <Divider />
+                <ScrollAreaAutosize mah="calc(100vh - 250px)">
+                    <Stack gap="sm" p="sm" w="100%">
+                        {children}
+                    </Stack>
+                </ScrollAreaAutosize>
+            </Stack>
+        </Scene>
+    );
+}
+
+function useInputs(): [<T = any>(name: string, fallback?: T) => T | null, <T = any>(name: string, value: T) => void] {
     const fields: Map<string, any> = useMap([]);
 
     const getValue = useCallback(
@@ -50,52 +109,15 @@ export function Scenes() {
     const [scene, setScene] = useScenes();
     const [field, setField] = useInputs();
 
-    useEffect(() => {
-        switch (scene) {
-            case "exiting-1":
-                setTimeout(
-                    () =>
-                        window.open(
-                            "https://www.imdb.com/title/tt0086567/",
-                            "_self"
-                        ),
-                    2000
-                );
-                break;
-            case "exiting-2":
-                setTimeout(
-                    () =>
-                        window.open(
-                            "https://en.wikipedia.org/wiki/Lie",
-                            "_self"
-                        ),
-                    2000
-                );
-                break;
-            default:
-                break;
-        }
-    }, [scene]);
-
     return (
         <>
             <Scene name="start">
-                <Stack
-                    gap="sm"
-                    w="100%"
-                    h="100%"
-                    align="center"
-                    justify="center"
-                >
+                <Stack gap="sm" w="100%" h="100%" align="center" justify="center">
                     <Title ff="monospace" order={2} fw={500}>
                         Would you like to play a game?
                     </Title>
                     <Group gap="sm" justify="center">
-                        <SceneButton
-                            size="md"
-                            leftSection={<MdCheck size={20} />}
-                            target="start-2"
-                        >
+                        <SceneButton size="md" leftSection={<MdCheck size={20} />} target="start-2">
                             Yes, please!
                         </SceneButton>
                         <SceneButton
@@ -103,6 +125,9 @@ export function Scenes() {
                             leftSection={<MdClose size={20} />}
                             target="exiting-1"
                             color="red"
+                            onClick={() => {
+                                setTimeout(() => window.open("https://www.imdb.com/title/tt0086567/", "_self"), 5000);
+                            }}
                         >
                             Can't fool me &gt;:3
                         </SceneButton>
@@ -124,20 +149,71 @@ export function Scenes() {
                     <Group gap="sm">
                         <Loader type="dots" />
                         <Title ff="monospace" order={2} fw={500}>
-                            Ah, you may be missing some of the supporting
-                            material. Please wait...
+                            Ah, you may be missing some of the supporting material. Please wait...
                         </Title>
                     </Group>
                 </Center>
             </Scene>
+            <Scene name="exiting-3">
+                <Center w="100%" h="100%">
+                    <Group gap="sm">
+                        <Loader type="bars" />
+                        <Stack gap="xs">
+                            <Title ff="monospace" order={2} fw={500}>
+                                Oh, well. I'm ever so sorry, I forgot where you actually lived.
+                            </Title>
+                            <Title ff="monospace" order={4} fw={400}>
+                                Here, let me pull up some relevant information on your non-stolen land.
+                            </Title>
+                        </Stack>
+                    </Group>
+                </Center>
+            </Scene>
+            <Scene name="exiting-4">
+                <Center w="100%" h="100%">
+                    <Group gap="sm">
+                        <Loader type="oval" />
+                        <Stack gap="xs">
+                            <Title ff="monospace" order={2} fw={500}>
+                                I'm sorry we couldn't help you.
+                            </Title>
+                            <Title ff="monospace" order={4} fw={400}>
+                                Relocating you to the Processing Center...
+                            </Title>
+                        </Stack>
+                    </Group>
+                </Center>
+            </Scene>
+            <Scene name="sidebar-1">
+                <Center w="100%" h="100%">
+                    <Stack gap="sm" align="center" justify="center">
+                        <Title ff="monospace" order={2} fw={500}>
+                            That doesn't matter.
+                        </Title>
+                        <Title ff="monospace" order={3} fw={400}>
+                            You benefit just the same.
+                        </Title>
+                        <Group gap="sm">
+                            <SceneButton size="md" leftSection={<MdCheck size={20} />} target="start-3">
+                                Fair enough.
+                            </SceneButton>
+                            <SceneButton
+                                size="md"
+                                leftSection={<TbMoodAngryFilled size={20} />}
+                                target="exiting-3"
+                                color="red"
+                                onClick={() => {
+                                    setTimeout(() => window.open("https://http.cat/status/404", "_self"), 5000);
+                                }}
+                            >
+                                I feel mischaracterized!
+                            </SceneButton>
+                        </Group>
+                    </Stack>
+                </Center>
+            </Scene>
             <Scene name="start-2">
-                <Stack
-                    gap="md"
-                    align="center"
-                    justify="center"
-                    h="100%"
-                    w="100%"
-                >
+                <Stack gap="md" align="center" justify="center" h="100%" w="100%">
                     <Title order={2} ff="monospace">
                         Where do you live?
                     </Title>
@@ -161,17 +237,11 @@ export function Scenes() {
                                 })),
                         ]}
                         value={field<string | null>("start-2.location")}
-                        onChange={(value) =>
-                            setField("start-2.location", value)
-                        }
+                        onChange={(value) => setField("start-2.location", value)}
                     />
                     {field("start-2.location") !== null && (
                         <Group gap="sm">
-                            <SceneButton
-                                size="md"
-                                leftSection={<MdCheck size={20} />}
-                                target="start-3"
-                            >
+                            <SceneButton size="md" leftSection={<MdCheck size={20} />} target="start-3">
                                 Continue
                             </SceneButton>
                             <SceneButton
@@ -187,6 +257,9 @@ export function Scenes() {
                                 leftSection={<TbMoodAngryFilled size={20} />}
                                 target="exiting-2"
                                 color="red"
+                                onClick={() => {
+                                    setTimeout(() => window.open("https://en.wikipedia.org/wiki/Lie", "_self"), 5000);
+                                }}
                             >
                                 This isn't a game...
                             </SceneButton>
@@ -194,6 +267,282 @@ export function Scenes() {
                     )}
                 </Stack>
             </Scene>
+            <Scene name="start-3">
+                <Stack gap="md" align="center" justify="center" h="100%" w="100%">
+                    <Title order={2} ff="monospace">
+                        What's your name?
+                    </Title>
+                    <Autocomplete
+                        size="lg"
+                        data={[
+                            "Henry Lee Tyler",
+                            "George Caldwell",
+                            "Alice Smith",
+                            "Lon Brown",
+                            "Cornelius Vanderbilt",
+                            "Miriam Jones",
+                            "Thomas Hall",
+                            "Mary Cook",
+                        ]}
+                        leftSection={<MdPerson size={20} />}
+                        placeholder="Enter your name (names may undergo minimal validation to ease your integration process)"
+                        w="50%"
+                        miw="480px"
+                        value={field<string>("start-3.name", "") ?? ""}
+                        onChange={(value) => setField("start-3.name", value)}
+                        error={
+                            (field<string>("start-3.name", "") ?? "").length === 0
+                                ? undefined
+                                : ALLOWED_NAMES.includes((field<string>("start-3.name", "") ?? "").toLowerCase())
+                                ? undefined
+                                : "Please enter a valid name."
+                        }
+                    />
+                    <Group gap="sm">
+                        <SceneButton
+                            leftSection={<MdCheck size={20} />}
+                            target="start-4"
+                            disabled={!ALLOWED_NAMES.includes((field<string>("start-3.name", "") ?? "").toLowerCase())}
+                        >
+                            Accept
+                        </SceneButton>
+                        <Tooltip label="You know, you should really be thankful for all this charity." color="dark" withArrow>
+                            <Button disabled leftSection={<MdClose size={20} />} color="red">
+                                But that isn't my name!
+                            </Button>
+                        </Tooltip>
+                    </Group>
+                </Stack>
+            </Scene>
+            <Scene name="start-4">
+                <Stack gap="sm" justify="center" align="center" w="100%" h="100%">
+                    <Title order={2} ff="monospace">
+                        Does this look right?
+                    </Title>
+                    <Paper withBorder p="sm" radius="sm" w="90%" maw="480px">
+                        <Stack gap="sm">
+                            <Group gap="sm">
+                                <MdPerson size={20} />
+                                <Text fw="bold">NAME: </Text>
+                                <Text>{field("start-3.name")}</Text>
+                            </Group>
+                            <Group gap="sm">
+                                <MdLocationPin size={20} />
+                                <Text fw="bold">LOCATION: </Text>
+                                <Text>STOLEN LAND</Text>
+                            </Group>
+                            <Group gap="sm">
+                                <MdFlag size={20} />
+                                <Text fw="bold">NATIONALITY: </Text>
+                                <Text>American</Text>
+                            </Group>
+                        </Stack>
+                    </Paper>
+                    <Group gap="sm" grow w="90%" maw="480px">
+                        <SceneButton target="start-5" leftSection={<MdCheck size={20} />}>
+                            Yes
+                        </SceneButton>
+                        <SceneButton
+                            target="exiting-4"
+                            leftSection={<MdClose size={20} />}
+                            color="red"
+                            onClick={() => {
+                                setTimeout(() => window.open("https://en.wikipedia.org/wiki/Genocide", "_self"), 5000);
+                            }}
+                        >
+                            No
+                        </SceneButton>
+                    </Group>
+                </Stack>
+            </Scene>
+            <Scene name="start-5">
+                <Stack gap="sm" justify="center" align="center" w="100%" h="100%">
+                    <Title order={2} ff="monospace">
+                        Simple enough. Did you have fun?
+                    </Title>
+                    <SceneButton leftSection={<MdClose size={20} />} color="red" target="start-6">
+                        Not really.
+                    </SceneButton>
+                </Stack>
+            </Scene>
+            <Scene name="start-6">
+                <Stack gap="sm" justify="center" align="center" w="100%" h="100%">
+                    <Title order={2} ff="monospace">
+                        Let's see... I have a paper here, it says:
+                    </Title>
+                    <Title order={4} ff="monospace">
+                        "{field("start-3.name")}, you have been ordered by the Court to have fun."
+                    </Title>
+                    <Title order={4} ff="monospace">
+                        So I ask again: Did you have fun?
+                    </Title>
+                    <SceneButton
+                        leftSection={<TbMoodHappyFilled size={28} />}
+                        color="green"
+                        target="start-7"
+                        size="lg"
+                        w="240px"
+                        justify="space-between"
+                    >
+                        Yes
+                    </SceneButton>
+                </Stack>
+            </Scene>
+            <Scene name="start-7">
+                <Stack gap="sm" justify="center" align="center" w="100%" h="100%">
+                    <Title order={2} ff="monospace">
+                        Glad to hear it.
+                    </Title>
+                    <SceneButton
+                        leftSection={<MdCheck size={28} />}
+                        color="green"
+                        target="win"
+                        size="lg"
+                        justify="space-between"
+                    >
+                        Accept Colonization
+                    </SceneButton>
+                </Stack>
+            </Scene>
+            <Scene name="win">
+                <Stack gap="sm" justify="center" align="center" w="100%" h="100%">
+                    <Title order={2} ff="monospace">
+                        You win!
+                    </Title>
+                    <SceneButton leftSection={<TbMoodAnnoyed size={28} />} target="slide-1" size="md" justify="space-between">
+                        That sucked. Can I learn about gender now?
+                    </SceneButton>
+                </Stack>
+            </Scene>
+            <Slide name="slide-1" next="slide-2" title="First, some background.">
+                <Title order={3}>What -- in broad terms -- is Queering Gender?</Title>
+                <Text>
+                    Queering gender is a collection of ideals and frameworks through which one might better understand the
+                    constructed features of gender & sexuality. This may include personal identity, one's presentation, or even
+                    simple behavioral or physical traits, provided that these facets are incongruous with the expected "norms"
+                    that the dominant culture assumes. Based on that, and the current dominance of a broadly Western culture,
+                    current acts and investigations of queering gender generally seek to oppose the following assumptions:
+                </Text>
+
+                <Accordion variant="separated" defaultValue={["a1"]} multiple>
+                    <AccordionItem value="a1">
+                        <AccordionControl icon={<TbGenderTransgender size={24} />}>
+                            Assumption: Sex is a biological binary.
+                        </AccordionControl>
+                        <AccordionPanel>
+                            <Stack gap="sm">
+                                <Text>
+                                    As a result of extended investigation into the topic, experts in human sexual development &
+                                    sexual multi-morphism agree that the so-called "truth" of the XX & XY chromosomes being the
+                                    sole determination of sex characteristics is wildly oversimplified and wholly invalid{" "}
+                                    <Cite cite={1} name="Fausto-Sterling" page={16} />. On the contrary, sex differentiation is
+                                    affected by several independent factors, and even at the point where sexual development has
+                                    been determined it frequently does not fit the restrictive binary assumed by Western
+                                    culture. These intersex characteristics can take a wide variety of forms, many of which are
+                                    themselves wide categories for any number of varied characteristics{" "}
+                                    <Cite cite={1} name="Fausto-Sterling" page={25} />.
+                                </Text>
+                                <Group gap="sm" wrap="nowrap" align="start">
+                                    <CitationSummary
+                                        cite={1}
+                                        title="Of Molecules and Sex"
+                                        author="Anne Fausto-Sterling"
+                                        style={{ flexGrow: 1 }}
+                                    >
+                                        <Text>
+                                            In <em>Of Molecules and Sex</em>, Fausto-Sterling seeks to dispel the notion that
+                                            binary sex is a generalizable system across the field of biology, especially as it
+                                            pertains to the study of human sexual development. She sets the stage by discussing
+                                            the so-called "Mother Goose version" of the mating behaviors of bluegill sunfish,
+                                            and highlights its immense inaccuracies when compared to the far more complex
+                                            behaviors and associated sexual characteristics that actually make up the species'
+                                            mating process <Cite cite={1} name="Fausto-Sterling" page={12} />. From this basis,
+                                            she describes similar discrepancies between commonly held beliefs regarding human
+                                            sexual development and the actual complexities involved, casting heavy doubt on the
+                                            assumed dimorphism upon which Western social norms are constructed. Through an
+                                            overall scientifically objective lens, Fausto-Sterling quite effectively
+                                            communicates the true complexity of human sexual development, clearly outlining its
+                                            stages from chromosomal sex, through fetal gonadal & hormonal sex, and finally to
+                                            genital sex.
+                                        </Text>
+                                    </CitationSummary>
+                                    <CitedImage
+                                        cite={1}
+                                        author="Fausto-Sterling"
+                                        page={18}
+                                        src={"/assets/img/gonadal_development.png"}
+                                        style={{ flexGrow: 0 }}
+                                        miw="512px"
+                                        imgProps={{
+                                            h: "auto",
+                                            w: "50%",
+                                            maw: "512px",
+                                            miw: "512px",
+                                        }}
+                                    />
+                                </Group>
+                            </Stack>
+                        </AccordionPanel>
+                    </AccordionItem>
+                    <AccordionItem value="a2">
+                        <AccordionControl icon={<MdFlag size={24} />}>
+                            Assumption: The Western conception of gender is the global default.
+                        </AccordionControl>
+                        <AccordionPanel>
+                            <Stack gap="sm">
+                                <Text>
+                                    On the contrary, there are numerous historical & modern examples of a non-Western conception
+                                    of gender and sexuality. The modern Western conception of gender and sexuality is, in fact,
+                                    heavily rooted in values more closely associated with Catholicism and similar faiths, and
+                                    rarely reflects the myriad concepts adhered to by other cultures. In its strict adherence to
+                                    a binary system defined primarily by birth sex, the Western concept of gender and sexuality
+                                    fails entirely to account for "around 10%" of its population that does not meet the
+                                    requirements of cisheteronormativity <Cite cite={2} name="Schleicher" page={422} />.
+                                </Text>
+                                <CitationSummary
+                                    cite={2}
+                                    title="Constructions of Sex and Gender: Attending to Androgynes and ‘Tumtumim’ through Jewish Scriptural Use."
+                                    author="Marianne Schleicher"
+                                >
+                                    <Stack gap="sm">
+                                        <Text>
+                                            In this piece, Schliecher describes in detail the specific legal categorizations
+                                            used to denote sex & gender in Jewish scripture. While she describes the baseline
+                                            assumptions at play at that time as largely binary, she clearly indicates the space
+                                            made for those who did not conform to the major categories of male/female. Her
+                                            primary focus is on the categorizations themselves, which she enumerates in their
+                                            classification and their effects on those who fell within them.
+                                        </Text>
+                                        <Divider variant="dashed" />
+                                        <Text fw="bold">What we can learn from this:</Text>
+                                        <Text>
+                                            In the context of Jewish scripture, sex was used as the basis for many facets of the
+                                            legal system, and granted different privileges to those of each sex. This deep
+                                            reliance on sex as a means of categorization meant that being certain of someone’s
+                                            sex was paramount to their legal status, and thus clear delineations on what each
+                                            category meant were thought to be critically necessary.
+                                        </Text>
+                                    </Stack>
+                                </CitationSummary>
+                            </Stack>
+                        </AccordionPanel>
+                    </AccordionItem>
+                    <AccordionItem value="a3">
+                        <AccordionControl icon={<TbBrain size={24} />}>
+                            Assumption: Birth sex determines gender identification.
+                        </AccordionControl>
+                        <AccordionPanel>
+                            <Stack gap="sm">
+                                <Text>
+                                    While this particular assumption is less accepted nowadays as support for transgender
+                                    individuals rises, it nevertheless plays a large part in the formation of many peoples'
+                                    biases.
+                                </Text>
+                            </Stack>
+                        </AccordionPanel>
+                    </AccordionItem>
+                </Accordion>
+            </Slide>
         </>
     );
 }
