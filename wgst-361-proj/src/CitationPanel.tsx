@@ -28,6 +28,14 @@ export function CitationPanel() {
                 Meyerowitz, Joanne. How Sex Changed: A History of Transsexuality in the United States. 1;1st Harvard University
                 Press pbk.; ed. Cambridge, MA: Harvard University Press, 2004;2002;2009.
             </Citation>
+            <Citation
+                citeKey={5}
+                title="Settler Homonationalism: Theorizing Settler Colonialism within Queer Modernities"
+                url="/assets/sources/settler_colonialism_queer_modernity.pdf"
+            >
+                Morgensen, Scott Lauria. "Settler Homonationalism: Theorizing Settler Colonialism within Queer Modernities." GLQ
+                16, no. 1-2 (2010): 105-131.
+            </Citation>
         </Stack>
     );
 }

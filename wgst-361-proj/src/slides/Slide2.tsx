@@ -1,5 +1,10 @@
+import { Title } from "@mantine/core";
 import { Slide } from "./Slide";
 
 export function Slide2() {
-    return <Slide name="slide-2" next="slide-3" title="Gender/Sexual Normativity as a Facet of Colonialism"></Slide>;
+    return (
+        <Slide name="slide-2" next="slide-3" title="Gender/Sexual Normativity as a Facet of Colonialism">
+            <Title order={3}>Assimilation of Identity</Title>
+        </Slide>
+    );
 }
