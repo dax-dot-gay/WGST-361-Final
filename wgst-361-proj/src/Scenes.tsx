@@ -529,15 +529,53 @@ export function Scenes() {
                     </AccordionItem>
                     <AccordionItem value="a3">
                         <AccordionControl icon={<TbBrain size={24} />}>
-                            Assumption: Birth sex determines gender identification.
+                            Assumption: Birth sex is equivalent to gender.
                         </AccordionControl>
                         <AccordionPanel>
                             <Stack gap="sm">
                                 <Text>
                                     While this particular assumption is less accepted nowadays as support for transgender
                                     individuals rises, it nevertheless plays a large part in the formation of many peoples'
-                                    biases.
+                                    biases. Efforts to deconstruct this notion were brought into the public eye through early
+                                    studies of "psychological sex", in an attempts to explain the experiences of transgender
+                                    individuals during the early 20th century <Cite cite={4} name="Meyerowitz" page={114} />.
+                                    Further progress was made in this disentanglement during the 2nd wave feminist movement,
+                                    which positioned femininity as a matter of identity as opposed to one of biology{" "}
+                                    <Cite cite={3} name="Hines" page={703} />. While these efforts contributed greatly to the
+                                    deconstruction of the assumed equivalence in question, both ultimately failed to take the
+                                    theory to its logical extent -- that as unrelated characteristics, sex and gender need not
+                                    be interrelated at all, or even have any real effect on one's cultural status.
                                 </Text>
+                                <CitationSummary cite={3} title="Sex Wars and (Trans) Gender Panics" author="Sally Hines">
+                                    <Text>
+                                        In the excerpt from her article, Hines contextualizes the development of a 20th-century
+                                        concept of gender with the simultaneous development of second-wave feminism. She
+                                        primarily focuses on the feminist movement’s fixation on sex as a distinct and
+                                        biologically rigid binary, even while many among them simultaneously explored gender as
+                                        a “matter of culture” or simply a “social classification”{" "}
+                                        <Cite cite={3} name="Hines" page={703} />. This contradiction in terms created a
+                                        significant paradox, as it indicated that the feminist movement wanted to destroy the
+                                        cultural meaning of sex differences while still maintaining the understanding of the
+                                        differences themselves.
+                                    </Text>
+                                </CitationSummary>
+                                <CitationSummary
+                                    cite={4}
+                                    title="How Sex Changed - From Sex to Gender (Excerpt)"
+                                    author="Joanne Meyerowitz"
+                                >
+                                    <Text>
+                                        In this excerpt, Meyerowitz describes the development of a scientific basis for
+                                        sex/gender disentanglement, focusing on the period during & following the second World
+                                        War most prominently. She focuses primarily on the concept of psychological sex – an
+                                        early understanding of gender’s non-reliance on physiological sex – and how that concept
+                                        shaped the discussion across many fields of medical science. Interestingly, this concept
+                                        was generally accepted by both proponents of gender-affirming care and those who instead
+                                        intended to change the mind to match the body; unlike today’s denial of gender’s
+                                        existence, scientists at the time seemed to differ most greatly in end goals rather than
+                                        foundational beliefs.
+                                    </Text>
+                                </CitationSummary>
                             </Stack>
                         </AccordionPanel>
                     </AccordionItem>

@@ -16,7 +16,15 @@ export function CitationPanel() {
                 Schleicher, Marianne. “Constructions of Sex and Gender: Attending to Androgynes and ‘Tumtumim’ through Jewish
                 Scriptural Use.” Literature and Theology 25, No. 4, (December 2011), pp. 422-435.
             </Citation>
-            <Citation citeKey={3} title="How Sex Changed - From Sex to Gender" url="/assets/sources/from_sex_to_gender.pdf">
+            <Citation citeKey={3} title="Sex Wars and (Trans) Gender Panics" url="/assets/sources/sex_wars_trans_panics.pdf">
+                Hines, Sally. “Sex wars and (trans) gender panics: Identity and body politics in contemporary UK feminism.” The
+                Sociological Review Monographs 68 no. 4 (2020): 699–717.
+            </Citation>
+            <Citation
+                citeKey={4}
+                title="How Sex Changed - From Sex to Gender (Excerpt)"
+                url="/assets/sources/from_sex_to_gender.pdf"
+            >
                 Meyerowitz, Joanne. How Sex Changed: A History of Transsexuality in the United States. 1;1st Harvard University
                 Press pbk.; ed. Cambridge, MA: Harvard University Press, 2004;2002;2009.
             </Citation>
