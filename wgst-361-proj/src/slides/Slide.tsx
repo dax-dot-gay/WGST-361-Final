@@ -10,7 +10,7 @@ export function Slide({
     children,
 }: {
     name: string;
-    next: string;
+    next?: string;
     title: string;
     children?: ReactNode | ReactNode[];
 }) {
@@ -21,9 +21,11 @@ export function Slide({
                     <Title order={2} ff="monospace">
                         {title}
                     </Title>
-                    <SceneButton size="md" rightSection={<MdArrowRight size={20} />} target={next}>
-                        Continue
-                    </SceneButton>
+                    {next && (
+                        <SceneButton size="md" rightSection={<MdArrowRight size={20} />} target={next}>
+                            Continue
+                        </SceneButton>
+                    )}
                 </Group>
                 <Divider />
                 <ScrollAreaAutosize mah="calc(100vh - 250px)">

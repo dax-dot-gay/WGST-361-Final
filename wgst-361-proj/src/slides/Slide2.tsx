@@ -28,26 +28,43 @@ export function Slide2() {
                                 terms of debate" <Cite cite={6} name="Ellasante" page={1509} />. A particularly relevant example
                                 of this practice in the queer space is the categorization of Two-Spirit individuals (among
                                 others, such as <em>Takatāpui</em>, <em>Fa’afafine</em>, and more) under the umbrella of
-                                "transgender," despite their distinct differences from that predominantly Western concept. The
-                                argument can be made that this may help the Western audience to understand these concepts more
-                                easily, but in reality it more often leads to wide-ranging redefinition of indigenous language
-                                that fails to even remotely describe the appropriate context.
+                                "transgender," despite their distinct differences from that predominantly Western concept{" "}
+                                <Cite cite={8} name="Bres" page={31} />. The argument can be made that this may help the Western
+                                audience to understand these concepts more easily, but in reality it more often leads to
+                                wide-ranging redefinition of indigenous language that fails to even remotely describe the
+                                appropriate context.
                             </Text>
-                            <CitationSummary
-                                cite={6}
-                                title="Radical Sovereignty, Rhetorical Borders, and the Everyday Decolonial Praxis of Indigenous Peoplehood and Two-Spirit Reclamation"
-                                author="Ian Khara Ellasante"
-                            >
-                                In <em>Radical Sovereignty</em>, Ellasante details in great depth the concepts of "rhetorical
-                                sovereignty" and "rhetorical imperialism" -- concepts crucial to understanding colonization as
-                                it applies to the linguistic basis of cultures undergoing colonization. They use the example of
-                                Two-Spirit individuals as a centerpoint in this discussion, illuminating its status as a term
-                                meant to "challenge the settler-defined" language that has intertwined itself into the
-                                understanding of LGBTQ experiences <Cite cite={6} name="Ellasante" page={1519} />. In short,
-                                they argue that rhetorical imperialism is a key tool in eliminating indigenous agency, which can
-                                be strongly connected to other more obvious efforts by settler states to deny the nationhood of
-                                those they've colonized.
-                            </CitationSummary>
+                            <Group gap="sm" align="start" wrap="nowrap">
+                                <CitationSummary
+                                    cite={6}
+                                    title="Radical Sovereignty, Rhetorical Borders, and the Everyday Decolonial Praxis of Indigenous Peoplehood and Two-Spirit Reclamation"
+                                    author="Ian Khara Ellasante"
+                                >
+                                    In <em>Radical Sovereignty</em>, Ellasante details in great depth the concepts of
+                                    "rhetorical sovereignty" and "rhetorical imperialism" -- concepts crucial to understanding
+                                    colonization as it applies to the linguistic basis of cultures undergoing colonization. They
+                                    use the example of Two-Spirit individuals as a centerpoint in this discussion, illuminating
+                                    its status as a term meant to "challenge the settler-defined" language that has intertwined
+                                    itself into the understanding of LGBTQ experiences{" "}
+                                    <Cite cite={6} name="Ellasante" page={1519} />. In short, they argue that rhetorical
+                                    imperialism is a key tool in eliminating indigenous agency, which can be strongly connected
+                                    to other more obvious efforts by settler states to deny the nationhood of those they've
+                                    colonized.
+                                </CitationSummary>
+                                <CitationSummary
+                                    cite={8}
+                                    title="Decolonising Trans‐Affirming Language in Aotearoa"
+                                    author="Julia Bres"
+                                >
+                                    Over the course of this paper, Bres argues for the decolonization of trans-related language
+                                    in Aotearoa (New Zealand). She focuses on three primary aspects of this issue, covering the
+                                    use of Western language to describe indigenous experiences, the necessity of "de-centering
+                                    whiteness" in trans spaces, and recent efforts by indigenous groups to achieve this end{" "}
+                                    <Cite cite={8} name="Bres" page={30} />. In particular, she highlights the failure of
+                                    understanding that an association between the "standard" Maori experience and that of
+                                    Western cisheteronormativity represents.
+                                </CitationSummary>
+                            </Group>
                         </Stack>
                     </AccordionPanel>
                 </AccordionItem>
@@ -71,7 +88,6 @@ export function Slide2() {
                                     cite={7}
                                     title="Stolen From Our Bodies: First Nations Two-Spirits/Queers and the Journey to a Sovereign Erotic"
                                     author="Qwo-li Driskill"
-                                    style={{ width: "calc(50% - 4px)" }}
                                 >
                                     In this piece, Driskill condemns the imposition of colonial sexual values on the Cherokee,
                                     and by extension all others that have been subject to the specter of Western imperialism.
@@ -85,7 +101,6 @@ export function Slide2() {
                                 </CitationSummary>
                                 <Alert
                                     icon={<TbExclamationCircleFilled size={20} />}
-                                    style={{ width: "calc(50% - 4px)" }}
                                     title="Qwo-Li Driskill: Controversies"
                                     color="yellow"
                                 >

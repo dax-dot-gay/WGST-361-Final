@@ -1,11 +1,12 @@
-import { Autocomplete, Button, Center, Group, Loader, Paper, Select, Stack, Text, Title, Tooltip } from "@mantine/core";
+import { Alert, Autocomplete, Button, Center, Group, Loader, Paper, Select, Stack, Text, Title, Tooltip } from "@mantine/core";
 import { useMap } from "@mantine/hooks";
 import { Scene, SceneButton } from "./components/SceneManager";
-import { MdCheck, MdClose, MdFlag, MdLocationPin, MdPerson } from "react-icons/md";
+import { MdCheck, MdClose, MdFlag, MdLocationPin, MdPerson, MdRefresh, MdShortText } from "react-icons/md";
 import { useCallback } from "react";
 import { TbMoodAngryFilled, TbMoodAnnoyed, TbMoodHappyFilled, TbMoodSadFilled } from "react-icons/tb";
 import { Slide1 } from "./slides/Slide1";
 import { Slide2 } from "./slides/Slide2";
+import { Slide3 } from "./slides/Slide3";
 
 const ALLOWED_NAMES = [
     "henry lee tyler",
@@ -351,12 +352,50 @@ export function Scenes() {
                         You win!
                     </Title>
                     <SceneButton leftSection={<TbMoodAnnoyed size={28} />} target="slide-1" size="md" justify="space-between">
-                        That sucked. Can I learn about gender now?
+                        That sucked. Can I learn about destroying the government now?
                     </SceneButton>
                 </Stack>
             </Scene>
             <Slide1 />
             <Slide2 />
+            <Slide3 />
+            <Scene name="conclusion-1">
+                <Stack gap="sm" justify="center" align="center" w="100%" h="100%">
+                    <Title order={2} ff="monospace">
+                        Good job! You made it! &lt;3
+                    </Title>
+                    <Alert
+                        icon={<MdShortText size={20} />}
+                        w="90%"
+                        maw="480px"
+                        title={
+                            <Stack gap={0}>
+                                TL;DR
+                                <Text c="dimmed" size="xs">
+                                    All-Natural Home-Grown Summary
+                                </Text>
+                            </Stack>
+                        }
+                        color="cyan"
+                    >
+                        <Text>
+                            Gender and sexual norms are used as assimilationist weapons. To defend ourselves, our communities,
+                            and victims of colonization, radical rejection of societal norms must be adopted. In other words:{" "}
+                            <b>Destroy the US Government with the power of 1 million funky genders! Among other things.</b>
+                        </Text>
+                    </Alert>
+                    <SceneButton
+                        leftSection={<MdRefresh size={24} />}
+                        size="md"
+                        w="90%"
+                        maw="480px"
+                        target="start"
+                        justify="space-between"
+                    >
+                        RESET
+                    </SceneButton>
+                </Stack>
+            </Scene>
         </>
     );
 }

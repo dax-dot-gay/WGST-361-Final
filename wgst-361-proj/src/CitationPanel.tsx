@@ -57,6 +57,14 @@ export function CitationPanel() {
                     Driskill, Quo-li. “Stolen From Our Bodies: First Nations Two-Spirits/Queers and the Journey to a Sovereign
                     Erotic.” Studies in American Indian Literatures 16, no. 2 (2004): 50–64.
                 </Citation>
+                <Citation
+                    citeKey={8}
+                    title="Decolonising Trans‐Affirming Language in Aotearoa"
+                    url="/assets/sources/decolonising_trans.pdf"
+                >
+                    Bres, Julia. "Decolonising Trans‐Affirming Language in Aotearoa." Journal of Sociolinguistics 28, no. 3
+                    (2024): 30-34.
+                </Citation>
             </Stack>
         </ScrollAreaAutosize>
     );
