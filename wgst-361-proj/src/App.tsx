@@ -1,14 +1,4 @@
-import {
-    Button,
-    createTheme,
-    Group,
-    MantineProvider,
-    Paper,
-    Space,
-    Stack,
-    Text,
-    Title,
-} from "@mantine/core";
+import { Button, createTheme, Group, MantineProvider, Paper, Space, Stack, Text, Title, Tooltip } from "@mantine/core";
 import "./style.scss";
 import { GiAnarchy } from "react-icons/gi";
 import { MdChevronRight, MdCollectionsBookmark } from "react-icons/md";
@@ -35,25 +25,10 @@ export function App() {
         >
             <Stack gap={0} className="layout-stack" p="md" align="center">
                 <Paper p="md" className="title-card" radius="md" shadow="md">
-                    <img
-                        className="title-flag trans"
-                        src="/assets/img/flag-trans.png"
-                    />
-                    <img
-                        className="title-flag nb"
-                        src="/assets/img/flag-nb.jpg"
-                    />
-                    <img
-                        className="title-flag genderqueer"
-                        src="/assets/img/flag-genderqueer.png"
-                    />
-                    <Group
-                        gap="xl"
-                        className="title-content"
-                        pl="lg"
-                        justify="space-between"
-                        pr={4}
-                    >
+                    <img className="title-flag trans" src="/assets/img/flag-trans.png" />
+                    <img className="title-flag nb" src="/assets/img/flag-nb.jpg" />
+                    <img className="title-flag genderqueer" src="/assets/img/flag-genderqueer.png" />
+                    <Group gap="xl" className="title-content" pl="lg" justify="space-between" pr={4}>
                         <Group gap="xl" className="title-header">
                             <GiAnarchy size={48} color="white" />
                             <Stack gap={0} ml="48px">
@@ -76,20 +51,21 @@ export function App() {
                         </Button>
                     </Group>
                 </Paper>
-                <Paper
-                    p="sm"
-                    pt="24px"
-                    radius="md"
-                    shadow="sm"
-                    className="title-nameplate"
-                >
+                <Paper p="sm" pt="24px" radius="md" shadow="sm" className="title-nameplate">
                     <Group gap="sm">
                         <Text fw="bold">WGST-361</Text>
-                        <MdChevronRight
-                            style={{ transform: "translate(0, 2px)" }}
-                            size={20}
-                        />
+                        <MdChevronRight style={{ transform: "translate(0, 2px)" }} size={20} />
                         <Text>Dax Harris</Text>
+                        <MdChevronRight style={{ transform: "translate(0, 2px)" }} size={20} />
+                        <Tooltip
+                            color="dark"
+                            label="This count omits section titles, in-text citations, and the introductory text prompts (as they are not strictly part of the academic content)"
+                            w={220}
+                            multiline
+                            withArrow
+                        >
+                            <Text>1486 Words</Text>
+                        </Tooltip>
                     </Group>
                 </Paper>
                 <Space h="sm"></Space>

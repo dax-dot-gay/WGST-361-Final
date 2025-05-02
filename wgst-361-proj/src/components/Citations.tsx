@@ -16,7 +16,7 @@ import {
 } from "@mantine/core";
 import { ReactNode } from "react";
 import { MdLink, MdTextSnippet } from "react-icons/md";
-import { useLocation, useNavigate } from "react-router";
+import { useNavigate, useSearchParams } from "react-router";
 
 export function Citation({
     citeKey,
@@ -29,10 +29,10 @@ export function Citation({
     url: string;
     children?: ReactNode | ReactNode[];
 }) {
-    const fragment = useLocation().hash;
+    const fragment = useSearchParams()[0].get("citation");
     return (
         <Paper
-            className={`citation-item${fragment === `#cite-${citeKey}` ? " selected" : ""}`}
+            className={`citation-item${fragment === `${citeKey}` ? " selected" : ""}`}
             id={`cite-${citeKey}`}
             onClick={() => window.open(url, "_blank")}
             withBorder
@@ -61,7 +61,13 @@ export function Citation({
 export function Cite({ cite, name, page }: { cite: number; name: string; page?: number }) {
     const nav = useNavigate();
     return (
-        <Anchor underline="hover" onClick={() => nav(`/citations#cite-${cite}`)}>
+        <Anchor
+            underline="hover"
+            onClick={(ev) => {
+                ev.stopPropagation();
+                nav(`/citations?citation=${cite}`);
+            }}
+        >
             ({name}
             {page === undefined ? "" : ` ${page}`})
         </Anchor>
@@ -94,7 +100,7 @@ export function CitationSummary({
                 </Stack>
             }
             className="citation-summary"
-            onClick={() => nav(`/citations#cite-${cite}`)}
+            onClick={() => nav(`/citations?citation=${cite}`)}
             {...props}
         >
             {children}
@@ -129,7 +135,7 @@ export function CitedImage({
                         size="md"
                         leftSection={<MdLink size={16} />}
                         className="cited-image-source"
-                        onClick={() => nav(`/citations#cite-${cite}`)}
+                        onClick={() => nav(`/citations?citation=${cite}`)}
                     >
                         {author}
                         {page === undefined ? "" : ` ${page}`}

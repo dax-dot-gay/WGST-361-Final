@@ -25,46 +25,30 @@ export function Slide2() {
                                 Western linguistic frameworks (currently that of American English, in much of the world) to the
                                 process of describing the experiences of those suffering from colonization. This practice has
                                 been described as "rhetorical imperialism," a process by which colonizing powers "[set] the
-                                terms of debate" <Cite cite={6} name="Ellasante" page={1509} />. A particularly relevant example
+                                terms of debate" <Cite cite={4} name="Ellasante" page={1509} />. A particularly relevant example
                                 of this practice in the queer space is the categorization of Two-Spirit individuals (among
                                 others, such as <em>Takatāpui</em>, <em>Fa’afafine</em>, and more) under the umbrella of
                                 "transgender," despite their distinct differences from that predominantly Western concept{" "}
-                                <Cite cite={8} name="Bres" page={31} />. The argument can be made that this may help the Western
+                                <Cite cite={6} name="Bres" page={31} />. The argument can be made that this may help the Western
                                 audience to understand these concepts more easily, but in reality it more often leads to
                                 wide-ranging redefinition of indigenous language that fails to even remotely describe the
                                 appropriate context.
                             </Text>
-                            <Group gap="sm" align="start" wrap="nowrap">
-                                <CitationSummary
-                                    cite={6}
-                                    title="Radical Sovereignty, Rhetorical Borders, and the Everyday Decolonial Praxis of Indigenous Peoplehood and Two-Spirit Reclamation"
-                                    author="Ian Khara Ellasante"
-                                >
-                                    In <em>Radical Sovereignty</em>, Ellasante details in great depth the concepts of
-                                    "rhetorical sovereignty" and "rhetorical imperialism" -- concepts crucial to understanding
-                                    colonization as it applies to the linguistic basis of cultures undergoing colonization. They
-                                    use the example of Two-Spirit individuals as a centerpoint in this discussion, illuminating
-                                    its status as a term meant to "challenge the settler-defined" language that has intertwined
-                                    itself into the understanding of LGBTQ experiences{" "}
-                                    <Cite cite={6} name="Ellasante" page={1519} />. In short, they argue that rhetorical
-                                    imperialism is a key tool in eliminating indigenous agency, which can be strongly connected
-                                    to other more obvious efforts by settler states to deny the nationhood of those they've
-                                    colonized.
-                                </CitationSummary>
-                                <CitationSummary
-                                    cite={8}
-                                    title="Decolonising Trans‐Affirming Language in Aotearoa"
-                                    author="Julia Bres"
-                                >
-                                    Over the course of this paper, Bres argues for the decolonization of trans-related language
-                                    in Aotearoa (New Zealand). She focuses on three primary aspects of this issue, covering the
-                                    use of Western language to describe indigenous experiences, the necessity of "de-centering
-                                    whiteness" in trans spaces, and recent efforts by indigenous groups to achieve this end{" "}
-                                    <Cite cite={8} name="Bres" page={30} />. In particular, she highlights the failure of
-                                    understanding that an association between the "standard" Maori experience and that of
-                                    Western cisheteronormativity represents.
-                                </CitationSummary>
-                            </Group>
+                            <CitationSummary
+                                cite={4}
+                                title="Radical Sovereignty, Rhetorical Borders, and the Everyday Decolonial Praxis of Indigenous Peoplehood and Two-Spirit Reclamation"
+                                author="Ian Khara Ellasante"
+                            >
+                                In <em>Radical Sovereignty</em>, Ellasante details in great depth the concepts of "rhetorical
+                                sovereignty" and "rhetorical imperialism" -- concepts crucial to understanding colonization as
+                                it applies to the linguistic basis of cultures undergoing colonization. They use the example of
+                                Two-Spirit individuals as a centerpoint in this discussion, illuminating its status as a term
+                                meant to "challenge the settler-defined" language that has intertwined itself into the
+                                understanding of LGBTQ experiences <Cite cite={4} name="Ellasante" page={1519} />. In short,
+                                they argue that rhetorical imperialism is a key tool in eliminating indigenous agency, which can
+                                be strongly connected to other more obvious efforts by settler states to deny the nationhood of
+                                those they've colonized.
+                            </CitationSummary>
                         </Stack>
                     </AccordionPanel>
                 </AccordionItem>
@@ -76,16 +60,14 @@ export function Slide2() {
                                 In addition to rhetorical assimilation, colonizing forces generally seek to impose their own
                                 values on those they assimilate. In most cases, these ideals are fundamentally incompatible with
                                 said cultures, resulting in the cultural ideals of indigenous groups being forcibly altered,
-                                repurposed, or even erased entirely. This is especially important when it comes to sexual
-                                values, where the overwhelmingly puritanical & patriarchal values of modern Western culture come
-                                into direct conflict with the values of various indigenous societies -- with devastating
-                                results. A chief example of this is the increased frequency of sexual violence and sexism in
-                                American Indian reservations in the US, grim reflections of the extreme levels of sexism and
-                                abuse endemic to American culture <Cite cite={7} name="Driskill" page={53} />.
+                                repurposed, or even erased entirely. A chief example of this is the increased frequency of
+                                sexual violence and sexism in American Indian reservations in the US, grim reflections of the
+                                extreme levels of sexism and abuse endemic to American culture{" "}
+                                <Cite cite={5} name="Driskill" page={53} />.
                             </Text>
                             <Group gap="sm" wrap="nowrap" align="start">
                                 <CitationSummary
-                                    cite={7}
+                                    cite={5}
                                     title="Stolen From Our Bodies: First Nations Two-Spirits/Queers and the Journey to a Sovereign Erotic"
                                     author="Qwo-li Driskill"
                                 >
@@ -93,7 +75,7 @@ export function Slide2() {
                                     and by extension all others that have been subject to the specter of Western imperialism.
                                     They focus especially on the concept of “sovereign eroticism,” highlighting the damaging
                                     influence that this “colonized sexuality” has had on the Cherokee culture and system of
-                                    values <Cite cite={7} name="Driskill" page={54} />. The piece as a whole quite effectively
+                                    values <Cite cite={5} name="Driskill" page={54} />. The piece as a whole quite effectively
                                     conveys the centuries of colonial trauma that indigenous communities have suffered from the
                                     colonization of their most basic systems of values, which can be easily extrapolated to the
                                     great breadth of other atrocities committed against indigenous people – in America and
@@ -106,10 +88,8 @@ export function Slide2() {
                                 >
                                     Based on significant controversy in November of 2023, Qwo-Li Driskill is suspected to be a
                                     "pretendian," or an individual who claims indigenous ancestry for personal or monetary
-                                    purposes. This accusation has been levied by the Tribal Alliance Against Frauds, which has
-                                    sufficient credibility to cast doubt on the cultural credentials that this author has to
-                                    discuss the matters in play. Despite this, however, several points made by Driskill's paper
-                                    are salient when validated against other sources, and so remain useful to this section.
+                                    purposes. Despite this, however, several points made by Driskill's paper are salient when
+                                    validated against other sources, and so remain useful to this section.
                                 </Alert>
                             </Group>
                         </Stack>
