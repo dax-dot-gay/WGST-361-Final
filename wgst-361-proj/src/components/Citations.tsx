@@ -41,7 +41,7 @@ export function Citation({
         >
             <Stack gap={0}>
                 <Group gap={0} wrap="nowrap" p={0}>
-                    <Center w="48px" h="48px">
+                    <Center w="48px" h="48px" miw="48px" mih="48px">
                         <Text size="lg" fw="bold">
                             {citeKey}
                         </Text>
@@ -52,7 +52,9 @@ export function Citation({
                     </Text>
                 </Group>
                 <Divider />
-                <Text p="sm">{children}</Text>
+                <Stack p="sm" gap="sm">
+                    {children}
+                </Stack>
             </Stack>
         </Paper>
     );
